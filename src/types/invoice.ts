@@ -1,13 +1,13 @@
 namespace Types {
   export interface LineItem {
     product: Product
-    rate: number
+    rate: decimal.Decimal
     quantity: number
   }
 
   export interface Invoice {
     createdBy: User
     lineItems: LineItem[]
-    totalAmount: number
+    totalAmount: decimal.Decimal
   }
 }

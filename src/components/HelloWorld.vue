@@ -96,6 +96,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator"
+import Decimal from "decimal.js"
 
 @Component
 export default class HelloWorld extends Vue {
@@ -114,14 +115,14 @@ export default class HelloWorld extends Vue {
 
     const lineItem = {
       product,
-      rate: 10,
+      rate: new Decimal(10),
       quantity: 1,
     }
 
     return {
       createdBy: user,
       lineItems: [lineItem],
-      totalAmount: 10,
+      totalAmount: new Decimal(10),
     }
   }
 }
