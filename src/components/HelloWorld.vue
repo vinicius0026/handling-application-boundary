@@ -95,11 +95,35 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator"
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+  @Prop() private msg!: string
+
+  createInvoice(): Types.Invoice {
+    const user = {
+      name: "Fake User",
+      avatar: "http://avatar-url.com",
+    }
+
+    const product: Types.Product = {
+      name: "Fake product",
+      description: "not a real product",
+    }
+
+    const lineItem = {
+      product,
+      rate: 10,
+      quantity: 1,
+    }
+
+    return {
+      createdBy: user,
+      lineItems: [lineItem],
+      totalAmount: 10,
+    }
+  }
 }
 </script>
 
