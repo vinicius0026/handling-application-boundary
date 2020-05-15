@@ -10,6 +10,11 @@ function create(
   }
 }
 
+function calculateLineTotal(lineItem: Types.LineItem): decimal.Decimal {
+  return lineItem.rate.times(lineItem.quantity)
+}
+
 export default {
   create,
+  calculateLineTotal,
 }
