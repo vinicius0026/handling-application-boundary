@@ -1,6 +1,6 @@
-# adopting-typescript-in-vue
+# Modularizing the logic of your Vue.js Application
 
-Code for the application discussed in the [Adopting TypeScript in your Vue.js Application in a sane way](https://medium.com/swlh/adopting-typescript-in-your-vue-js-application-in-a-sane-way-d6bd31757fe5) article.
+Code for the application discussed in the []() article.
 
 ## Project setup
 ```
