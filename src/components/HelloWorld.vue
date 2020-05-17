@@ -97,33 +97,24 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator"
 import Decimal from "decimal.js"
+import User from "@/modules/user"
+import Product from "@/modules/product"
+import LineItem from "@/modules/lineItem"
+import Invoice from "@/modules/invoice"
 
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string
 
   createInvoice(): Types.Invoice {
-    const user = {
-      name: "Fake User",
-      avatar: "http://avatar-url.com",
-    }
+    const user = User.create("Fake User", "http://avatar-url.com")
+    const product = Product.create("Fake product", "not a real product")
+    const lineItem = LineItem.create(product, new Decimal(10), 1)
 
-    const product: Types.Product = {
-      name: "Fake product",
-      description: "not a real product",
-    }
+    let invoice = Invoice.create(user)
+    invoice = Invoice.addLineItem(invoice, lineItem)
 
-    const lineItem = {
-      product,
-      rate: new Decimal(10),
-      quantity: 1,
-    }
-
-    return {
-      createdBy: user,
-      lineItems: [lineItem],
-      totalAmount: new Decimal(10),
-    }
+    return invoice
   }
 }
 </script>
