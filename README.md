@@ -1,6 +1,6 @@
 # Modularizing the logic of your Vue.js Application
 
-Code for the application discussed in the []() article.
+Code for the application discussed in the [Modularizing the Logic of Your Vue.js Application](https://medium.com/@vinicius0026/modularizing-the-logic-of-your-vue-js-application-5b920e17c25e) article.
 
 ## Project setup
 ```
