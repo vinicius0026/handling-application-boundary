@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch, Mixins } from "vue-property-decorator"
+import { Vue, Component, Prop } from "vue-property-decorator"
 
 @Component({})
 export default class ProductSelector extends Vue {
