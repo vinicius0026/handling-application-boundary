@@ -27,7 +27,7 @@
       </label>
     </div>
     <div slot="footer">
-      <button @click="updateLineItem">Ok</button>
+      <button @click="updateLineItem" :disabled="!isValidLineItem">Ok</button>
       <button @click="$emit('close')">Cancel</button>
     </div>
   </SimpleModal>
@@ -48,7 +48,7 @@ import Decimal from "decimal.js"
 })
 export default class EditLineItemModal extends Vue {
   @Prop({ required: true, type: Object })
-  item!: Types.LineItem
+  item!: Types.Partial<Types.LineItem>
 
   @Prop({ type: String, default: "edit" })
   mode!: "edit" | "create"
@@ -69,6 +69,14 @@ export default class EditLineItemModal extends Vue {
   }
   set rate(val) {
     this.localLineItem.rate = val ? new Decimal(val) : null
+  }
+
+  get isValidLineItem() {
+    return (
+      !!this.localLineItem.product &&
+      !!this.localLineItem.rate &&
+      typeof this.localLineItem.quantity == "number"
+    )
   }
 
   @Watch("value", { immediate: true, deep: true })
