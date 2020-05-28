@@ -1,5 +1,15 @@
 import Decimal from "decimal.js"
 import LineItem from "@/modules/lineItem"
+import User from "@/modules/user"
+
+function parse(data?: Types.Partial<Types.Invoice>): Types.Invoice {
+  return {
+    id: data!.id || null,
+    createdBy: User.parse(data!.createdBy || {}),
+    lineItems: data!.lineItems ? data!.lineItems.map(LineItem.parse) : [],
+    totalAmount: new Decimal(data!.totalAmount || 0),
+  }
+}
 
 function calculateTotal(invoice: Types.Invoice): decimal.Decimal {
   return invoice.lineItems
@@ -55,6 +65,7 @@ function changeLineItem(
 }
 
 export default {
+  parse,
   create,
   addLineItem,
   removeLineItem,

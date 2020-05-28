@@ -5,6 +5,14 @@ function create(name: string = "", description: string = ""): Types.Product {
   }
 }
 
+function parse(data?: Types.Partial<Types.Product>): Types.Product {
+  return {
+    name: data!.name || "",
+    description: data!.description || "",
+  }
+}
+
 export default {
   create,
+  parse,
 }

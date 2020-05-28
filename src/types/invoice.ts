@@ -6,6 +6,7 @@ namespace Types {
   }
 
   export interface Invoice {
+    id: number | null
     createdBy: User
     lineItems: LineItem[]
     totalAmount: decimal.Decimal
