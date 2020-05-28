@@ -1,6 +1,6 @@
 # Data-driven components
 
-Code for the application discussed in the [Data-driven components](https://medium.com/@vinicius0026/data-driven-components-2ab02ccbf204) article.
+Code for the application discussed in the [Data-driven components](https://medium.com/@vinicius0026/handling-application-boundary-2ab02ccbf204) article.
 
 ## Project setup
 ```
