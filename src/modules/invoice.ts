@@ -1,8 +1,29 @@
 import Decimal from "decimal.js"
 import LineItem from "@/modules/lineItem"
 
+function calculateTotal(invoice: Types.Invoice): decimal.Decimal {
+  return invoice.lineItems
+    .map(LineItem.calculateLineTotal)
+    .reduce((sum, curr) => sum.plus(curr), new Decimal(0))
+}
+
+function setLineItems(
+  invoice: Types.Invoice,
+  lineItems: Types.LineItem[]
+): Types.Invoice {
+  const updatedInvoice = {
+    ...invoice,
+    lineItems,
+  }
+  return {
+    ...updatedInvoice,
+    totalAmount: calculateTotal(updatedInvoice),
+  }
+}
+
 function create(user: Types.User): Types.Invoice {
   return {
+    id: null,
     createdBy: user,
     lineItems: [],
     totalAmount: new Decimal(0),
@@ -31,26 +52,6 @@ function changeLineItem(
     i === index ? newLineItem : item
   )
   return setLineItems(invoice, lineItems)
-}
-
-function calculateTotal(invoice: Types.Invoice): decimal.Decimal {
-  return invoice.lineItems
-    .map(LineItem.calculateLineTotal)
-    .reduce((sum, curr) => sum.plus(curr), new Decimal(0))
-}
-
-function setLineItems(
-  invoice: Types.Invoice,
-  lineItems: Types.LineItem[]
-): Types.Invoice {
-  const updatedInvoice = {
-    ...invoice,
-    lineItems,
-  }
-  return {
-    ...updatedInvoice,
-    totalAmount: calculateTotal(updatedInvoice),
-  }
 }
 
 export default {
