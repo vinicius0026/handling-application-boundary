@@ -1,6 +1,6 @@
-# Data-driven components
+# Handling data at the edge of your Vue.js application
 
-Code for the application discussed in the [Data-driven components](https://medium.com/@vinicius0026/handling-application-boundary-2ab02ccbf204) article.
+Code for the application discussed in the [Handling data at the edge of your Vue.js application]() article.
 
 ## Project setup
 ```
